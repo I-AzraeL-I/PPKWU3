@@ -25,10 +25,46 @@ public class StringFileController {
     })
     public ResponseEntity<Statistics> getStatistics(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.getStatistics(data).getBody();
-        return prepareRequest(body, format);
+        return prepareResponse(body, format);
     }
 
-    private <T> ResponseEntity<T> prepareRequest(T body, String format) {
+    @GetMapping(value = "/is-word", produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+    })
+    public ResponseEntity<Boolean> isAlpha(@RequestParam String data, @RequestParam String format) {
+        var body = stringApiClient.isAlpha(data).getBody();
+        return prepareResponse(body, format);
+    }
+
+    @GetMapping(value = "/is-number", produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+    })
+    public ResponseEntity<Boolean> isNumber(@RequestParam String data, @RequestParam String format) {
+        var body = stringApiClient.isNumber(data).getBody();
+        return prepareResponse(body, format);
+    }
+
+    @GetMapping(value = "/is-lower", produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+    })
+    public ResponseEntity<Boolean> isLower(@RequestParam String data, @RequestParam String format) {
+        var body = stringApiClient.isLower(data).getBody();
+        return prepareResponse(body, format);
+    }
+
+    @GetMapping(value = "/is-upper", produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+    })
+    public ResponseEntity<Boolean> isUpper(@RequestParam String data, @RequestParam String format) {
+        var body = stringApiClient.isUpper(data).getBody();
+        return prepareResponse(body, format);
+    }
+
+    private <T> ResponseEntity<T> prepareResponse(T body, String format) {
         var mediaType = parseMediaType(format);
         if (mediaType == null) {
             return ResponseEntity.badRequest().build();
