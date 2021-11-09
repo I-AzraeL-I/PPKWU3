@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class StringFileController {
+public class StringFormatController {
 
     private final StringApiClient stringApiClient;
 
