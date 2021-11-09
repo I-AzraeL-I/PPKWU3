@@ -1,4 +1,4 @@
-package com.mycompany.stringapiwrapper.controller.dto;
+package com.mycompany.stringapiwrapper.dto;
 
 public class Statistics {
 

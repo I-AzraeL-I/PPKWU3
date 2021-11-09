@@ -1,6 +1,6 @@
 package com.mycompany.stringapiwrapper.controller;
 
-import com.mycompany.stringapiwrapper.controller.util.ControllerUtils;
+import com.mycompany.stringapiwrapper.util.ControllerUtils;
 import com.mycompany.stringapiwrapper.service.StringApiClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

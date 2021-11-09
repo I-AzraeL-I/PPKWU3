@@ -1,4 +1,4 @@
-package com.mycompany.stringapiwrapper.controller.util;
+package com.mycompany.stringapiwrapper.util;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

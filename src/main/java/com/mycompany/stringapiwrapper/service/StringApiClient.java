@@ -1,6 +1,6 @@
 package com.mycompany.stringapiwrapper.service;
 
-import com.mycompany.stringapiwrapper.controller.dto.Statistics;
+import com.mycompany.stringapiwrapper.dto.Statistics;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
