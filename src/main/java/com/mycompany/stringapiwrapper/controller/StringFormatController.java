@@ -1,10 +1,8 @@
 package com.mycompany.stringapiwrapper.controller;
 
-import com.mycompany.stringapiwrapper.controller.dto.Statistics;
+import com.mycompany.stringapiwrapper.controller.util.ControllerUtils;
 import com.mycompany.stringapiwrapper.service.StringApiClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,71 +20,55 @@ public class StringFormatController {
     @GetMapping(value = "/statistics", produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
+            MediaType.TEXT_PLAIN_VALUE
     })
-    public ResponseEntity<Statistics> getStatistics(@RequestParam String data, @RequestParam String format) {
+    public ResponseEntity<?> getStatistics(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.getStatistics(data).getBody();
-        return prepareResponse(body, format);
+        var mediaType = ControllerUtils.parseMediaType(format);
+        return ControllerUtils.preparedResponse(body, mediaType);
     }
 
     @GetMapping(value = "/is-word", produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
+            MediaType.TEXT_PLAIN_VALUE
     })
-    public ResponseEntity<Boolean> isAlpha(@RequestParam String data, @RequestParam String format) {
+    public ResponseEntity<?> isAlpha(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.isAlpha(data).getBody();
-        return prepareResponse(body, format);
+        var mediaType = ControllerUtils.parseMediaType(format);
+        return ControllerUtils.preparedResponse(body, mediaType);
     }
 
     @GetMapping(value = "/is-number", produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
+            MediaType.TEXT_PLAIN_VALUE
     })
-    public ResponseEntity<Boolean> isNumber(@RequestParam String data, @RequestParam String format) {
+    public ResponseEntity<?> isNumber(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.isNumber(data).getBody();
-        return prepareResponse(body, format);
+        var mediaType = ControllerUtils.parseMediaType(format);
+        return ControllerUtils.preparedResponse(body, mediaType);
     }
 
     @GetMapping(value = "/is-lower", produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
+            MediaType.TEXT_PLAIN_VALUE
     })
-    public ResponseEntity<Boolean> isLower(@RequestParam String data, @RequestParam String format) {
+    public ResponseEntity<?> isLower(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.isLower(data).getBody();
-        return prepareResponse(body, format);
+        var mediaType = ControllerUtils.parseMediaType(format);
+        return ControllerUtils.preparedResponse(body, mediaType);
     }
 
     @GetMapping(value = "/is-upper", produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
+            MediaType.TEXT_PLAIN_VALUE
     })
-    public ResponseEntity<Boolean> isUpper(@RequestParam String data, @RequestParam String format) {
+    public ResponseEntity<?> isUpper(@RequestParam String data, @RequestParam String format) {
         var body = stringApiClient.isUpper(data).getBody();
-        return prepareResponse(body, format);
-    }
-
-    private <T> ResponseEntity<T> prepareResponse(T body, String format) {
-        var mediaType = parseMediaType(format);
-        if (mediaType == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        var headers = getContentHeaders(mediaType);
-        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(body);
-    }
-
-    private HttpHeaders getContentHeaders(MediaType mediaType) {
-        var responseHeaders = new HttpHeaders();
-        responseHeaders.setContentType(mediaType);
-        return responseHeaders;
-    }
-
-    private MediaType parseMediaType(String format) {
-        switch (format) {
-            case "json":
-                return MediaType.APPLICATION_JSON;
-            case "xml":
-                return MediaType.APPLICATION_XML;
-            default:
-                return null;
-        }
+        var mediaType = ControllerUtils.parseMediaType(format);
+        return ControllerUtils.preparedResponse(body, mediaType);
     }
 }
