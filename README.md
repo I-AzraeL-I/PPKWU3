@@ -71,16 +71,16 @@ GET http://localhost:8081/api/statistics?data=eXAMPLE12$&format=txt
 ```
 HTTP 200 OK
 isWord: false
-isNumber false
-isLower false
-isUpper false
-characterCount 10
-letterCount 7
-digitCount 2
-lowercaseLetterCount 1
-uppercaseLetterCount 6
-whitespaceCount 0
-specialCharactersCount 1
+isNumber: false
+isLower: false
+isUpper: false
+characterCount: 10
+letterCount: 7
+digitCount: 2
+lowercaseLetterCount: 1
+uppercaseLetterCount: 6
+whitespaceCount: 0
+specialCharactersCount: 1
 ```
 ### Example #5
 ```

@@ -17,15 +17,15 @@ public class Statistics {
     @Override
     public String toString() {
         return "isWord: " + isWord + "\n" +
-                "isNumber " + isNumber + "\n" +
-                "isLower " + isLower + "\n" +
-                "isUpper " + isUpper + "\n" +
-                "characterCount " + characterCount + "\n" +
-                "letterCount " + letterCount + "\n" +
-                "digitCount " + digitCount + "\n" +
-                "lowercaseLetterCount " + lowercaseLetterCount + "\n" +
-                "uppercaseLetterCount " + uppercaseLetterCount + "\n" +
-                "whitespaceCount " + whitespaceCount + "\n" +
-                "specialCharactersCount " + specialCharactersCount + "\n";
+                "isNumber: " + isNumber + "\n" +
+                "isLower: " + isLower + "\n" +
+                "isUpper: " + isUpper + "\n" +
+                "characterCount: " + characterCount + "\n" +
+                "letterCount: " + letterCount + "\n" +
+                "digitCount: " + digitCount + "\n" +
+                "lowercaseLetterCount: " + lowercaseLetterCount + "\n" +
+                "uppercaseLetterCount: " + uppercaseLetterCount + "\n" +
+                "whitespaceCount: " + whitespaceCount + "\n" +
+                "specialCharactersCount: " + specialCharactersCount + "\n";
     }
 }
