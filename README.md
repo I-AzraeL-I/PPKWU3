@@ -13,7 +13,7 @@ This is a simple REST API wrapper which exposes 5 GET endpoints which take text 
 [returns body with statistics containg flags above and number of occurrences of certain character types]
 #### Request parameters
 - data - any textual data to be processed
-- format - desired output format type [available: json, xml, txt]
+- format - desired output format type [available: json, xml, txt, csv]
 
 ## Tech stack
 - Spring Boot 2.5.5
@@ -103,6 +103,15 @@ HTTP 200 OK
 </Statistics>
 ```
 ### Example #6
+```
+GET http://localhost:8081/api/statistics?data=eXAMPLE12$&format=csv
+```
+```
+HTTP 200 OK
+characterCount,digitCount,isLower,isNumber,isUpper,isWord,letterCount,lowercaseLetterCount,specialCharactersCount,uppercaseLetterCount,whitespaceCount
+10,2,false,false,false,false,7,1,1,6,0
+```
+### Example #7
 ```
 GET http://localhost:8081/api/statistics?data=eXAMPLE12$&format=Wrong
 ```
